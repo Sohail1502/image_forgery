@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MobForge-Net - Image Forgery Detection</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <h1>🔍 MobForge-Net</h1>
+                <p>Lightweight Image Forgery Detection & Localization</p>
+            </div>
+            <div class="model-status" id="modelStatus">
+                <span class="status-dot"></span>
+                <span id="statusText">Loading...</span>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Upload Section -->
+            <section class="upload-section">
+                <div class="upload-box" id="uploadBox">
+                    <div class="upload-icon">📤</div>
+                    <h2>Upload Image</h2>
+                    <p>Drag and drop your image here, or click to select</p>
+                    <input 
+                        type="file" 
+                        id="fileInput" 
+                        accept=".jpg,.jpeg,.png,.bmp,.tiff"
+                        class="file-input"
+                    >
+                </div>
+                <div class="file-info">
+                    <p>Supported formats: JPG, PNG, BMP, TIFF<br>Max file size: 50MB</p>
+                </div>
+            </section>
+
+            <!-- Loading Spinner -->
+            <div class="loading" id="loadingSpinner" style="display: none;">
+                <div class="spinner"></div>
+                <p>Analyzing image for forgery...</p>
+            </div>
+
+            <!-- Results Section -->
+            <section class="results-section" id="resultsSection" style="display: none;">
+                <!-- Visualization -->
+                <div class="visualization">
+                    <img id="visualizationImg" src="" alt="Forgery Detection Result">
+                </div>
+
+                <!-- Metrics -->
+                <div class="metrics">
+                    <div class="metric-card">
+                        <div class="metric-label">Verdict</div>
+                        <div class="metric-value verdict" id="verdictText">-</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-label">Forged Area</div>
+                        <div class="metric-value" id="forgeryPctText">-</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-label">Inference Time</div>
+                        <div class="metric-value" id="inferenceTimeText">-</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-label">Device</div>
+                        <div class="metric-value device" id="deviceText">-</div>
+                    </div>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="action-buttons">
+                    <button class="btn btn-primary" id="resetBtn">Upload Another</button>
+                    <button class="btn btn-secondary" id="downloadBtn">Download Result</button>
+                </div>
+            </section>
+
+            <!-- Error Message -->
+            <div class="error-message" id="errorMessage" style="display: none;">
+                <span id="errorText"></span>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>MobForge-Net v1.0 | Lightweight Dual-Stream Forgery Detection</p>
+            <p class="footer-details">
+                5.65M Parameters • MobileNetV3-Small • Dual-Stream (RGB + SRM)<br>
+                <a href="#" target="_blank">GitHub</a> | 
+                <a href="#" target="_blank">Paper</a>
+            </p>
+        </footer>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
